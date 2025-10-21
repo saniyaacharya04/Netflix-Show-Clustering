@@ -1,3 +1,5 @@
+Here’s your nicely formatted README without any screenshot references, cleaned up for clarity and consistency:
+
 ```markdown
 # Netflix Clustering Dashboard
 
@@ -10,26 +12,25 @@ A **modular, interactive dashboard** for exploring Netflix shows using clusterin
 * **Dynamic Filtering Panel**: Filter shows by genres, ratings, type, and release year.
 * **Clustering Modes**: Choose between K-Means, Hierarchical, or Comparison mode.
 * **Cluster Analysis**:
-
-  * PCA scatter plots of clusters.
-  * Genre distribution heatmaps per cluster.
-  * Rating distribution boxplots.
-  * Cluster cohesion metrics.
-  * Top shows per cluster table.
-* **Word Clouds**: Generate cluster-wise word clouds from show descriptions.
-* **Clustering Comparison**: Side-by-side K-Means vs Hierarchical PCA plots with silhouette scores.
-* **Download Data**: Export filtered clustered data as CSV.
+  * PCA scatter plots of clusters
+  * Genre distribution heatmaps per cluster
+  * Rating distribution boxplots
+  * Cluster cohesion metrics
+  * Top shows per cluster table
+* **Word Clouds**: Generate cluster-wise word clouds from show descriptions
+* **Clustering Comparison**: Side-by-side K-Means vs Hierarchical PCA plots with silhouette scores
+* **Download Data**: Export filtered clustered data as CSV
 
 ---
 
 ## 🛠 Tech Stack
 
-* Python 3.13
-* Streamlit
-* Pandas, NumPy
-* Scikit-learn
-* Seaborn, Matplotlib, Plotly
-* WordCloud
+* Python 3.13  
+* Streamlit  
+* Pandas, NumPy  
+* Scikit-learn  
+* Seaborn, Matplotlib, Plotly  
+* WordCloud  
 
 ---
 
@@ -81,7 +82,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Open your browser at `http://localhost:8501`.
+Open your browser at [http://localhost:8501](http://localhost:8501).
 
 ---
 
@@ -89,8 +90,8 @@ Open your browser at `http://localhost:8501`.
 
 * Requires `netflix_titles.csv` in the `data/` folder.
 * Fully modular structure for easy enhancements and deployment.
-* Optional: Deploy on **Streamlit Cloud** or **Heroku** for public access.
 * `.history`, temporary files, and local screenshots are **excluded from Git**.
+* Optional: Deploy on **Streamlit Cloud** or **Heroku** for public access.
 
 ---
 
@@ -98,5 +99,14 @@ Open your browser at `http://localhost:8501`.
 
 **Saniya Acharya** – [GitHub Profile](https://github.com/saniyaacharya04)
 
-```
+````
 
+You can now **save this README** and push it to GitHub with:  
+
+```bash
+git add README.md
+git commit -m "Update README: clean version without screenshots"
+git push origin main
+````
+
+Do you want me to also **update the `.gitignore`** to ensure `.history`, screenshots, and other temp files are permanently ignored?
