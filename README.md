@@ -1,11 +1,11 @@
 ```
-## Netflix Clustering Dashboard
+# Netflix Clustering Dashboard
 
 A **modular, interactive dashboard** for exploring Netflix shows using clustering techniques. Users can analyze shows by genre, rating, type, and release year, and compare **K-Means** and **Hierarchical** clustering methods with PCA visualizations, silhouette scores, and cluster-level word clouds.
 
 ---
 
-## Features
+## 🚀 Features
 
 * **Dynamic Filtering Panel**: Filter shows by genres, ratings, type, and release year.
 * **Clustering Modes**: Choose between K-Means, Hierarchical, or Comparison mode.
@@ -21,7 +21,7 @@ A **modular, interactive dashboard** for exploring Netflix shows using clusterin
 
 ---
 
-## Tech Stack
+## 🛠 Tech Stack
 
 * Python 3.13  
 * Streamlit  
@@ -32,7 +32,7 @@ A **modular, interactive dashboard** for exploring Netflix shows using clusterin
 
 ---
 
-## Project Structure
+## 👑 Project Structure
 
 ```
 
@@ -52,7 +52,7 @@ netflix-show-clustering/
 
 ---
 
-## Installation & Setup
+## ⚡ Installation & Setup
 
 1. **Clone the repo:**
 
@@ -84,7 +84,7 @@ Open your browser at [http://localhost:8501](http://localhost:8501).
 
 ---
 
-## Notes
+## ✨ Notes
 
 * Requires `netflix_titles.csv` in the `data/` folder.
 * Fully modular structure for easy enhancements and deployment.
@@ -93,7 +93,7 @@ Open your browser at [http://localhost:8501](http://localhost:8501).
 
 ---
 
-## Author
+## 👉 Author
 
 **Saniya Acharya** – [GitHub Profile](https://github.com/saniyaacharya04)
 
