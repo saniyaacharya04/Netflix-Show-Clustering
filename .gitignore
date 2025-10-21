@@ -1,0 +1,10 @@
+# Ignore history files
+.history/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore dataset/output
+netflix_clustered.csv
+data/
