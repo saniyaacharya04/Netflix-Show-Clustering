@@ -19,3 +19,6 @@ netflix_env/
 screenshots/
 history/
 .history/
+.history/
+screenshots/
+autosync.sh
