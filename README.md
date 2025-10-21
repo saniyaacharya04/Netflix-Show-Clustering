@@ -1,7 +1,4 @@
-Here’s your nicely formatted README without any screenshot references, cleaned up for clarity and consistency:
-
-```markdown
-# Netflix Clustering Dashboard
+'''# Netflix Clustering Dashboard
 
 A **modular, interactive dashboard** for exploring Netflix shows using clustering techniques. Users can analyze shows by genre, rating, type, and release year, and compare **K-Means** and **Hierarchical** clustering methods with PCA visualizations, silhouette scores, and cluster-level word clouds.
 
@@ -99,14 +96,3 @@ Open your browser at [http://localhost:8501](http://localhost:8501).
 
 **Saniya Acharya** – [GitHub Profile](https://github.com/saniyaacharya04)
 
-````
-
-You can now **save this README** and push it to GitHub with:  
-
-```bash
-git add README.md
-git commit -m "Update README: clean version without screenshots"
-git push origin main
-````
-
-Do you want me to also **update the `.gitignore`** to ensure `.history`, screenshots, and other temp files are permanently ignored?
