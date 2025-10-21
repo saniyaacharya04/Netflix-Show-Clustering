@@ -1,3 +1,4 @@
+```markdown
 # Netflix Clustering Dashboard
 
 A **modular, interactive dashboard** for exploring Netflix shows using clustering techniques. Users can analyze shows by genre, rating, type, and release year, and compare **K-Means** and **Hierarchical** clustering methods with PCA visualizations, silhouette scores, and cluster-level word clouds.
@@ -35,6 +36,7 @@ A **modular, interactive dashboard** for exploring Netflix shows using clusterin
 ## 👑 Project Structure
 
 ```
+
 netflix-show-clustering/
 │
 ├─ app.py                  # Main Streamlit app
@@ -42,11 +44,12 @@ netflix-show-clustering/
 ├─ data/
 │   └─ netflix_titles.csv  # Dataset
 └─ src/
-    ├─ preprocess.py       # Data loading & filtering
-    ├─ cluster.py          # Clustering functions
-    ├─ visualize.py        # Plots & metrics
-    └─ utils.py            # Word cloud & helper functions
-```
+├─ preprocess.py       # Data loading & filtering
+├─ cluster.py          # Clustering functions
+├─ visualize.py        # Plots & metrics
+└─ utils.py            # Word cloud & helper functions
+
+````
 
 ---
 
@@ -57,7 +60,7 @@ netflix-show-clustering/
 ```bash
 git clone https://github.com/<YOUR_USERNAME>/netflix-show-clustering.git      
 cd netflix-show-clustering
-```
+````
 
 2. **Create a virtual environment:**
 
@@ -82,39 +85,12 @@ Open your browser at `http://localhost:8501`.
 
 ---
 
-## 📊 Screenshots
-
-### Single Clustering Mode – PCA Plot
-
-![Single Clustering PCA](screenshots/Single_Clustering_PCA_1.png)
-
-### Single Clustering Mode – Genre Heatmap
-
-![Genre Heatmap](screenshots/Genre_Heatmap_1.png)
-
-### Single Clustering Mode – Rating Boxplot
-
-![Rating Boxplot](screenshots/Rating_Boxplot_1.png)
-
-### Single Clustering Mode – Word Clouds
-
-![Word Clouds](screenshots/WordClouds_1.png)
-
-### Comparison Mode – K-Means PCA
-
-![Comparison K-Means](screenshots/Comparison_Mode_PCA_1.png)
-
-### Comparison Mode – Hierarchical PCA
-
-![Comparison Hierarchical](screenshots/Comparison_Mode_PCA_2.png)
-
----
-
 ## ✨ Notes
 
 * Requires `netflix_titles.csv` in the `data/` folder.
 * Fully modular structure for easy enhancements and deployment.
 * Optional: Deploy on **Streamlit Cloud** or **Heroku** for public access.
+* `.history`, temporary files, and local screenshots are **excluded from Git**.
 
 ---
 
@@ -122,8 +98,5 @@ Open your browser at `http://localhost:8501`.
 
 **Saniya Acharya** – [GitHub Profile](https://github.com/saniyaacharya04)
 
----
+```
 
-✅ If you want, I can also **add a “How to capture screenshots automatically” section** in the README with the Selenium script we wrote, so anyone can regenerate the screenshots themselves.
-
-Do you want me to add that?
