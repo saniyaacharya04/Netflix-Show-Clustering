@@ -3,18 +3,18 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.sqlite3
+*.log
 
 # Virtual environment
 netflix_env/
-venv/
-env/
 
-# OS files
-.DS_Store
-Thumbs.db
-
-# Jupyter
+# Jupyter notebooks checkpoints
 .ipynb_checkpoints/
 
-# Output / temp
-outputs/
+# macOS system files
+.DS_Store
+
+# Screenshots / history / temp
+screenshots/
+history/
