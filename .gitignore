@@ -18,3 +18,4 @@ netflix_env/
 # Screenshots / history / temp
 screenshots/
 history/
+.history/
