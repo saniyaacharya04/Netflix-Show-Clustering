@@ -1,0 +1,13 @@
+# Ignore history and temp files
+.history/
+*.swp
+*.tmp
+*.log
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore data files (optional)
+data/
+netflix_clustered.csv

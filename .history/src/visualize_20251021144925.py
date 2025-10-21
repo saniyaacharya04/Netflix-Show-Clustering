@@ -54,35 +54,3 @@ def compare_pca_plots(X_scaled, clustering_dict, title_prefix="Clustering Compar
                          hover_data=df_pca.columns)
         plots[method] = fig
     return plots
-
-def compare_pca_plots(X_scaled, clustering_dict, title_prefix="Clustering Comparison"):
-    """
-    Return PCA scatter plots for K-Means and Hierarchical clustering.
-
-    Parameters:
-        X_scaled (ndarray): Scaled feature matrix.
-        clustering_dict (dict): Dictionary returned by compare_clustering() with labels & silhouette scores.
-        title_prefix (str): Prefix for plot titles.
-
-    Returns:
-        dict: {'K-Means': fig, 'Hierarchical': fig} Plotly figures
-    """
-    pca = PCA(n_components=2)
-    X_pca = pca.fit_transform(X_scaled)
-
-    df_pca = pd.DataFrame({
-        'PCA1': X_pca[:, 0],
-        'PCA2': X_pca[:, 1]
-    })
-
-    plots = {}
-    for method in clustering_dict.keys():
-        df_pca['Cluster'] = clustering_dict[method]['labels']
-        fig = px.scatter(
-            df_pca, x='PCA1', y='PCA2', color='Cluster',
-            title=f"{title_prefix}: {method}",
-            hover_data=df_pca.columns
-        )
-        plots[method] = fig
-
-    return plots

@@ -1,4 +1,5 @@
 import streamlit as st
+from urllib.parse import unquote
 from src.preprocess import load_data, get_filtered_df
 from src.cluster import prepare_features, run_clustering, compare_clustering
 from src.visualize import plot_pca, genre_heatmap, rating_boxplot, cluster_cohesion, compare_pca_plots
@@ -15,10 +16,15 @@ df = load_data()
 # -----------------------------
 st.title("Netflix Clustering Dashboard")
 
-# Mode selection
+# Load display mode from URL query parameter if present
+query_params = st.experimental_get_query_params()
+display_mode_default = query_params.get("display_mode", ["Single Clustering"])[0]
+display_mode_default = unquote(display_mode_default)
+
 display_mode = st.sidebar.radio(
     "Display Mode",
-    ["Single Clustering", "Comparison Mode"]
+    ["Single Clustering", "Comparison Mode"],
+    index=0 if display_mode_default == "Single Clustering" else 1
 )
 
 cluster_method = st.sidebar.selectbox("Clustering Method", ["K-Means", "Hierarchical"])
@@ -65,11 +71,11 @@ if display_mode == "Single Clustering":
 
     st.subheader("Genre Distribution Heatmap")
     fig_heatmap = genre_heatmap(filtered_df, genres_dummies)
-    st.pyplot(fig_heatmap)
+    st.pyplot(fig_heatmap, clear_figure=True)
 
     st.subheader("Rating Distribution Boxplot")
     fig_boxplot = rating_boxplot(filtered_df)
-    st.pyplot(fig_boxplot)
+    st.pyplot(fig_boxplot, clear_figure=True)
 
     st.subheader("Cluster Cohesion Metrics")
     metrics = cluster_cohesion(X_scaled, filtered_df)
@@ -82,7 +88,7 @@ if display_mode == "Single Clustering":
         text = " ".join(filtered_df[filtered_df['Cluster'] == c]['description'].tolist())
         plt_wc = generate_wordcloud(text, max_words, color_map)
         if plt_wc:
-            st.pyplot(plt_wc)
+            st.pyplot(plt_wc, clear_figure=True)
 
     st.subheader("Top Shows per Cluster")
     for i in range(n_clusters):
@@ -99,49 +105,12 @@ else:
     comparison_dict = compare_clustering(X_scaled, n_clusters)
     plots = compare_pca_plots(X_scaled, comparison_dict)
 
-    for method in ['K-Means', 'Hierarchical']:
-        st.markdown(f"## {method} Clustering")
+    # Display comparison PCA plots with unique keys
+    st.plotly_chart(plots['K-Means'], key="comp_kmeans")
+    st.write(f"K-Means Silhouette Score: {comparison_dict['K-Means']['silhouette']:.3f}")
 
-        # PCA Plot
-        st.subheader("PCA Cluster Plot")
-        st.plotly_chart(plots[method], key=f"{method}_pca")
-
-        # Genre Heatmap
-        st.subheader("Genre Distribution Heatmap")
-        df_temp = filtered_df.copy()
-        df_temp['Cluster'] = comparison_dict[method]['labels']
-        fig_heatmap = genre_heatmap(df_temp, genres_dummies)
-        st.pyplot(fig_heatmap)
-
-        # Rating Boxplot
-        st.subheader("Rating Distribution Boxplot")
-        fig_boxplot = rating_boxplot(df_temp)
-        st.pyplot(fig_boxplot)
-
-        # Cluster Cohesion
-        st.subheader("Cluster Cohesion Metrics")
-        metrics = cluster_cohesion(X_scaled, df_temp)
-        for c, dist in metrics.items():
-            st.write(f"Cluster {c} average distance: {dist:.2f}")
-
-        # Word Clouds per Cluster
-        st.subheader("Word Clouds per Cluster")
-        for c in sorted(df_temp['Cluster'].unique()):
-            st.markdown(f"**Cluster {c}**")
-            text = " ".join(df_temp[df_temp['Cluster'] == c]['description'].tolist())
-            plt_wc = generate_wordcloud(text, max_words, color_map)
-            if plt_wc:
-                st.pyplot(plt_wc)
-
-        # Top Shows per Cluster
-        st.subheader("Top Shows per Cluster")
-        for i in range(n_clusters):
-            st.markdown(f"**Cluster {i}**")
-            st.write(df_temp[df_temp['Cluster'] == i][
-                ['title', 'type', 'rating', 'duration', 'listed_in']
-            ].head(5))
-
-
+    st.plotly_chart(plots['Hierarchical'], key="comp_hier")
+    st.write(f"Hierarchical Silhouette Score: {comparison_dict['Hierarchical']['silhouette']:.3f}")
 
 # -----------------------------
 # Download CSV

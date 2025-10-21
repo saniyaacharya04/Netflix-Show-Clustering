@@ -99,49 +99,65 @@ else:
     comparison_dict = compare_clustering(X_scaled, n_clusters)
     plots = compare_pca_plots(X_scaled, comparison_dict)
 
+    # Display comparison PCA plots with unique keys
+    st.plotly_chart(plots['K-Means'], key="comp_kmeans")
+    st.write(f"K-Means Silhouette Score: {comparison_dict['K-Means']['silhouette']:.3f}")
+
+    st.plotly_chart(plots['Hierarchical'], key="comp_hier")
+    st.write(f"Hierarchical Silhouette Score: {comparison_dict['Hierarchical']['silhouette']:.3f}")
+# -----------------------------
+# COMPARISON MODE
+# -----------------------------
+else:
+    st.subheader("Clustering Comparison: K-Means vs Hierarchical")
+    comparison_dict = compare_clustering(X_scaled, n_clusters)
+    plots = compare_pca_plots(X_scaled, comparison_dict)
+
+    # -----------------------------
+    # PCA Plots
+    # -----------------------------
+    st.markdown("### PCA Comparison")
+    st.plotly_chart(plots['K-Means'], key="comp_kmeans_pca")
+    st.write(f"K-Means Silhouette Score: {comparison_dict['K-Means']['silhouette']:.3f}")
+    st.plotly_chart(plots['Hierarchical'], key="comp_hier_pca")
+    st.write(f"Hierarchical Silhouette Score: {comparison_dict['Hierarchical']['silhouette']:.3f}")
+
+    # -----------------------------
+    # Genre Heatmaps per method
+    # -----------------------------
+    st.markdown("### Genre Distribution Heatmaps")
     for method in ['K-Means', 'Hierarchical']:
-        st.markdown(f"## {method} Clustering")
-
-        # PCA Plot
-        st.subheader("PCA Cluster Plot")
-        st.plotly_chart(plots[method], key=f"{method}_pca")
-
-        # Genre Heatmap
-        st.subheader("Genre Distribution Heatmap")
         df_temp = filtered_df.copy()
         df_temp['Cluster'] = comparison_dict[method]['labels']
         fig_heatmap = genre_heatmap(df_temp, genres_dummies)
         st.pyplot(fig_heatmap)
+        st.write(f"{method} Cluster Genre Distribution")
 
-        # Rating Boxplot
-        st.subheader("Rating Distribution Boxplot")
+    # -----------------------------
+    # Rating Boxplots per method
+    # -----------------------------
+    st.markdown("### Rating Distribution Boxplots")
+    for method in ['K-Means', 'Hierarchical']:
+        df_temp = filtered_df.copy()
+        df_temp['Cluster'] = comparison_dict[method]['labels']
         fig_boxplot = rating_boxplot(df_temp)
         st.pyplot(fig_boxplot)
+        st.write(f"{method} Cluster Rating Distribution")
 
-        # Cluster Cohesion
-        st.subheader("Cluster Cohesion Metrics")
-        metrics = cluster_cohesion(X_scaled, df_temp)
-        for c, dist in metrics.items():
-            st.write(f"Cluster {c} average distance: {dist:.2f}")
-
-        # Word Clouds per Cluster
-        st.subheader("Word Clouds per Cluster")
+    # -----------------------------
+    # Word Clouds per method
+    # -----------------------------
+    st.markdown("### Word Clouds per Cluster")
+    for method in ['K-Means', 'Hierarchical']:
+        st.markdown(f"#### {method}")
+        df_temp = filtered_df.copy()
+        df_temp['Cluster'] = comparison_dict[method]['labels']
         for c in sorted(df_temp['Cluster'].unique()):
             st.markdown(f"**Cluster {c}**")
             text = " ".join(df_temp[df_temp['Cluster'] == c]['description'].tolist())
             plt_wc = generate_wordcloud(text, max_words, color_map)
             if plt_wc:
                 st.pyplot(plt_wc)
-
-        # Top Shows per Cluster
-        st.subheader("Top Shows per Cluster")
-        for i in range(n_clusters):
-            st.markdown(f"**Cluster {i}**")
-            st.write(df_temp[df_temp['Cluster'] == i][
-                ['title', 'type', 'rating', 'duration', 'listed_in']
-            ].head(5))
-
-
 
 # -----------------------------
 # Download CSV
