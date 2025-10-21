@@ -1,7 +1,3 @@
-Here’s an **updated README** for your Netflix Clustering Dashboard with placeholders for the screenshots you captured. I’ve integrated the screenshots in the proper sections so the README looks complete and visually appealing:
-
----
-
 # Netflix Clustering Dashboard
 
 A **modular, interactive dashboard** for exploring Netflix shows using clustering techniques. Users can analyze shows by genre, rating, type, and release year, and compare **K-Means** and **Hierarchical** clustering methods with PCA visualizations, silhouette scores, and cluster-level word clouds.
