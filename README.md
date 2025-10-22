@@ -1,6 +1,5 @@
 
-# Netflix Clustering Dashboard![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-
+# Netflix Clustering Dashboard[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A **modular, interactive dashboard** for exploring Netflix shows using clustering techniques. Users can analyze shows by genre, rating, type, and release year, and compare **K-Means** and **Hierarchical** clustering methods with PCA visualizations, silhouette scores, and cluster-level word clouds.
 
